@@ -21,6 +21,7 @@ export default createGlobalStyle`
     --blue-twitter: #2AA9E0;
     --invert-white: ${props => props.theme.colors.invertWhite};
     --invert-black: ${props => props.theme.colors.invertBlack};
+    --overlay: ${props => props.theme.colors.overlay};
   }
 
 @media(max-width: 1080px) {

@@ -10,5 +10,6 @@ export default {
 		title: '#e1e1e6',
 		invertWhite: 'brightness(10%) contrast(100%)',
 		invertBlack: 'brightness(0) invert(1)',
+		overlay: 'rgba(8, 7, 5, 0.8)'
 	}
 }
