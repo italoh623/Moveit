@@ -58,6 +58,8 @@ export function ChallengesProvider({
     function levelUp() {
         setLevel(level + 1);
         setIsLevelUpModalOpen(true);
+
+        new Audio('audios/levelUp.mp3').play();
     }
 
     function closeLevelUpModal() {
@@ -70,7 +72,7 @@ export function ChallengesProvider({
 
         setActiveChallenge(challenge);
 
-        new Audio('/notification.mp3').play();
+        new Audio('audios/notification.mp3').play();
 
         if (Notification.permission === 'granted') {
             new Notification('Novo desafio 🎉', {
