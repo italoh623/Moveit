@@ -1,6 +1,5 @@
 import React from 'react'
 import { ThemeProvider, DefaultTheme } from 'styled-components';
-import { ChallengesProvider } from '../contexts/ChallengesContext';
 import { usePersistedState } from '../utils/usePersistedState';
 
 import GlobalStyle from '../styles/global';
@@ -17,9 +16,7 @@ function MyApp({ Component, pageProps }) {
 	return (
 		<ThemeProvider theme={theme}>
 			<GlobalStyle />
-				<ChallengesProvider>
-					<Component {...pageProps} toggleTheme={toggleTheme} />
-				</ChallengesProvider>
+			<Component {...pageProps} toggleTheme={toggleTheme} />
 		</ThemeProvider>
 	)
 }
