@@ -69,7 +69,7 @@
 }
 
 .countdownButtonActive:hover {
-    background: var(--red);
+    background: var(--red) !important;
     color: var(--shape);
 }
 
