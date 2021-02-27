@@ -2,7 +2,7 @@ import Head from 'next/head'
 import { GetServerSideProps } from 'next'
 
 import Switch from 'react-switch';
-import { SyntheticEvent, useContext } from 'react';
+import { useContext } from 'react';
 import { ThemeContext } from 'styled-components';
 
 import { ChallengeBox } from "../components/ChallengeBox";

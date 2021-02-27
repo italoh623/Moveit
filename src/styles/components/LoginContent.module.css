@@ -1,0 +1,102 @@
+.container {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: center;
+    padding: 1rem;
+    z-index: 999;
+}
+
+.container > img {
+    margin: 3rem 0;
+    width: 18.94rem;
+}
+
+.container strong {
+    padding: 1rem 0;
+
+    font-size: 2.25rem;
+    font-weight: 600;
+    color: #FFFFFF;
+}
+
+.github {
+    display: flex;
+    flex-direction: row;
+
+    margin: 0.5rem 0;
+}
+
+.github img {
+    width: 2.5rem;
+}
+
+.github p {
+    margin-left: 1.5rem;
+
+    font-size: 1.25rem;
+    color: var(--text-highlight);
+}
+
+.input {
+    display: flex;
+    height: 5rem;
+    min-width: 26.25rem;
+
+    margin: 2.25rem 0;
+}
+
+.input input {
+    height: 100%;
+    width: calc(100% - 5rem);
+
+    border: none;
+    border-radius: 5px 0px 0px 5px;
+
+    color: #FFFFFF;
+    padding-left: 1rem;
+
+    background: linear-gradient(90deg, var(--blue-dark) 0%, rgba(73, 83, 184, 0.2) 100%);
+}
+
+.input input::placeholder {
+    color: var(--text-highlight);
+}
+
+.input button {
+    height: 100%;
+    width: 5rem;
+
+    padding: 1rem;
+
+    border: none;
+    border-radius: 0px 5px 5px 0px;
+}
+
+.ready {
+    cursor: pointer;
+    background: var(--green);
+}
+
+.ready:hover {
+    filter: brightness(0.9);
+}
+
+.notReady {
+    cursor: not-allowed;
+    background: var(--blue-dark);
+}
+
+.input button img {
+    width: 1.5rem;
+}
+
+@media(max-width: 720px) {
+    .container > img {
+        width: 15rem;
+    }
+
+    .input {
+        min-width: inherit;
+    }
+}

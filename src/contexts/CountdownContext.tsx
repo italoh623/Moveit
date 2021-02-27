@@ -1,7 +1,7 @@
 import { createContext, useState, ReactNode, useContext, useEffect } from 'react';
 import { ChallengesContext } from './ChallengesContext';
 
-const TIMER = 25 * 60;
+const TIMER = 0.05 * 60;
 let countdownTimeout: NodeJS.Timeout;
 
 interface CountdownContextData {
