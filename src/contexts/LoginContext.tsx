@@ -48,12 +48,15 @@ export function LoginProvider({
     useEffect(() => {
         if (logged) {
             router.push('/');
+        } else {
+            router.push('/login');
         }
     }, [logged]);
 
     useEffect(() => {
         Cookies.set('userLogged', JSON.stringify(userLogged));
-    }, [userLogged])
+        Cookies.set('logged', JSON.stringify(logged));
+    }, [userLogged, logged])
 
     return (
         <LoginContext.Provider 

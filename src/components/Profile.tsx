@@ -6,7 +6,10 @@ import styles from '../styles/components/Profile.module.css';
 export function Profile() {
     const { level } = useContext(ChallengesContext);
     const { logged, userLogged } = useContext(LoginContext);
-    // console.log(userLogged)
+
+    if (!logged) {
+        
+    }
 
     
     return (
