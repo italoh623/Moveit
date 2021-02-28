@@ -79,16 +79,15 @@ export default function Home({
 export const getServerSideProps: GetServerSideProps = async (ctx) => {
 	const { level, currentExperience, challengesCompleted, logged, userLogged } = ctx.req.cookies;
 
-	const obj = JSON.parse(userLogged || '{"name":"Ítalo Henrique", "avatar":"https://github.com/italoh623.png", "gitHubUser":"italoh623"}');
-	// const user = new  User(obj.gitHubUser, obj.name, obj.avatar);
+	const user = JSON.parse(userLogged || '{}');
 
 	return {
 		props: {
 			level: Number(level),
 			currentExperience: Number(currentExperience),
 			challengesCompleted: Number(challengesCompleted),
-			logged: Boolean(logged),
-			userLogged: obj
+			logged: logged === 'true',
+			userLogged: user
 		}
 	}
 }

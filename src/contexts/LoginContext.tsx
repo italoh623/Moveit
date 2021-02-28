@@ -1,9 +1,8 @@
 import { useRouter } from 'next/router';
 import Cookies from 'js-cookie';
-import { createContext, useState, ReactNode, useContext, useEffect } from 'react';
+import { createContext, useState, ReactNode, useEffect } from 'react';
 
 import axios from 'axios';
-import { setupMaster } from 'cluster';
 import User from '../models/User';
 
 interface LoginContextData {
@@ -35,6 +34,7 @@ export function LoginProvider({
             .then((res) => {
                 SetUserLogged(res.data.user);
                 setLogged(true);
+
                 router.push('/');
             })
             .catch((error) => {
@@ -43,13 +43,15 @@ export function LoginProvider({
     }
 
     function LogOut() {
+        SetUserLogged(null);
         setLogged(false);
+
         router.push('/login');
     }
 
     useEffect(() => {
         Cookies.set('userLogged', JSON.stringify(userLogged));
-        Cookies.set('logged', JSON.stringify(logged));
+        Cookies.set('logged', String(logged));
     }, [userLogged, logged])
 
     return (

@@ -6,17 +6,25 @@ import styles from '../styles/components/Profile.module.css';
 export function Profile() {
     const { level } = useContext(ChallengesContext);
     const { logged, userLogged } = useContext(LoginContext);
+
     
     return (
-        <div className={styles.profileContainer}>
-            <img src={`${userLogged.avatar}`} alt="Ítalo Henrique"/>
-            <div>
-                <strong>{userLogged.name}</strong>
-                <p>
-                    <img src="icons/level.svg" alt="Level"/>
-                    Level {level}
-                </p>
-            </div>
-        </div>
+        <>
+            {logged ? (
+                <div className={styles.profileContainer}>
+                    <img src={`${userLogged.avatar}`} alt={userLogged.name}/>
+                    <div>
+                        <strong>{userLogged.name}</strong>
+                        <p>
+                            <img src="icons/level.svg" alt="Level"/>
+                            Level {level}
+                        </p>
+                    </div>
+                </div>
+            ) : (
+                <></>
+            )}
+        </>
+        
     );
 }

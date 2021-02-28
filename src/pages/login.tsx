@@ -31,13 +31,14 @@ export default function Login({ logged, userLogged }: LoginProps) {
 export const getServerSideProps: GetServerSideProps = async (ctx) => {
 	const { logged, userLogged } = ctx.req.cookies;
     
-    const obj = JSON.parse(userLogged || '{"name":"Ítalo Henrique", "avatar":"https://github.com/italoh623.png", "gitHubUser":"italoh623"}');
-	// const user = new  User(obj.gitHubUser, obj.name, obj.avatar);
+    const user = JSON.parse(userLogged || '{}');
+    console.log(logged)
+    console.log(logged === 'true')
 
 	return {
 		props: {
-			logged: Boolean(logged),
-			userLogged: obj
+			logged: logged === 'true',
+			userLogged: user
 		}
 	}
 }
