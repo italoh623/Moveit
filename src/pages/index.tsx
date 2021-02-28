@@ -1,7 +1,6 @@
 import Head from 'next/head'
 import { GetServerSideProps } from 'next'
 
-import Switch from 'react-switch';
 import { useContext } from 'react';
 import { ThemeContext } from 'styled-components';
 
@@ -10,12 +9,15 @@ import { CompletedChallenges } from "../components/CompletedChallenges";
 import { Countdown } from "../components/Countdown";
 import { ExperienceBar } from "../components/ExperienceBar";
 import { Profile } from "../components/Profile";
-import { CountdownProvider } from '../contexts/CountdownContext';
+import { Settings } from '../components/Settings';
 
-import styles from '../styles/pages/Home.module.css'
+import { CountdownProvider } from '../contexts/CountdownContext';
 import { ChallengesProvider } from '../contexts/ChallengesContext';
 import { LoginProvider } from '../contexts/LoginContext';
 import User from '../models/User';
+
+
+import styles from '../styles/pages/Home.module.css'
 
 interface HomeProps {
 	level: number;
@@ -26,7 +28,14 @@ interface HomeProps {
 	toggleTheme: () => void;
 }
 
-export default function Home({level, currentExperience, challengesCompleted, logged, userLogged, toggleTheme}: HomeProps) {
+export default function Home({
+	level,
+	currentExperience,
+	challengesCompleted,
+	logged,
+	userLogged,
+	toggleTheme
+}: HomeProps) {
 	const { colors, title } = useContext(ThemeContext);
 
 	return (
@@ -43,21 +52,11 @@ export default function Home({level, currentExperience, challengesCompleted, log
 
 					<ExperienceBar />
 
-					<div className={styles.switch}>
-						<Switch
-							onChange={toggleTheme}
-							checked={title === 'dark'}
-							checkedIcon={false}
-							uncheckedIcon={false}
-							height={10}
-							width={36}
-							handleDiameter={20}
-							offHandleColor={colors.text}
-							onHandleColor={colors.textHighlight}
-							offColor={colors.grayLine}
-							onColor={colors.text}
-						/>
-					</div>
+					<Settings 
+						toggleTheme={toggleTheme}
+						colors={colors}
+						title={title}
+					/>
 
 					<CountdownProvider>
 						<section>

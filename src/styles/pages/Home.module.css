@@ -16,14 +16,6 @@
     gap: 6.25rem;
     align-content: center;
 }
-  
-.switch {
-    display: flex;
-    flex-direction: column;
-    align-items: flex-end;
-    justify-content: center;
-    padding: 2rem 0;
-}
 
 @media(max-width: 720px) {
     .container section {

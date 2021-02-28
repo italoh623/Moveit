@@ -35,6 +35,7 @@ export function LoginProvider({
             .then((res) => {
                 SetUserLogged(res.data.user);
                 setLogged(true);
+                router.push('/');
             })
             .catch((error) => {
                 alert(error);
@@ -43,15 +44,8 @@ export function LoginProvider({
 
     function LogOut() {
         setLogged(false);
+        router.push('/login');
     }
-
-    useEffect(() => {
-        if (logged) {
-            router.push('/');
-        } else {
-            router.push('/login');
-        }
-    }, [logged]);
 
     useEffect(() => {
         Cookies.set('userLogged', JSON.stringify(userLogged));
