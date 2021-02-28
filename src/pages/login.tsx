@@ -32,8 +32,6 @@ export const getServerSideProps: GetServerSideProps = async (ctx) => {
 	const { logged, userLogged } = ctx.req.cookies;
     
     const user = JSON.parse(userLogged || '{}');
-    console.log(logged)
-    console.log(logged === 'true')
 
 	return {
 		props: {
