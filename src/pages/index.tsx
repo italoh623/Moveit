@@ -14,71 +14,82 @@ import { CountdownProvider } from '../contexts/CountdownContext';
 
 import styles from '../styles/pages/Home.module.css'
 import { ChallengesProvider } from '../contexts/ChallengesContext';
+import { LoginProvider } from '../contexts/LoginContext';
+import User from '../models/User';
 
 interface HomeProps {
 	level: number;
 	currentExperience: number;
 	challengesCompleted: number;
+	logged: boolean;
+	userLogged: User;
 	toggleTheme: () => void;
 }
 
-export default function Home({level, currentExperience, challengesCompleted, toggleTheme}: HomeProps) {
+export default function Home({level, currentExperience, challengesCompleted, logged, userLogged, toggleTheme}: HomeProps) {
 	const { colors, title } = useContext(ThemeContext);
 
 	return (
-		<ChallengesProvider 
-			level={level}
-			currentExperience={currentExperience}
-			challengesCompleted={challengesCompleted}
-		>
-			<div className={styles.container}>
-				<Head>
-					<title>Início | Move.it</title>
-				</Head>
+		<LoginProvider logged={logged} userLogged={userLogged}>
+			<ChallengesProvider 
+				level={level}
+				currentExperience={currentExperience}
+				challengesCompleted={challengesCompleted}
+			>
+				<div className={styles.container}>
+					<Head>
+						<title>Início | Move.it</title>
+					</Head>
 
-				<ExperienceBar />
+					<ExperienceBar />
 
-				<div className={styles.switch}>
-					<Switch
-						onChange={toggleTheme}
-						checked={title === 'dark'}
-						checkedIcon={false}
-						uncheckedIcon={false}
-						height={10}
-						width={36}
-						handleDiameter={20}
-						offHandleColor={colors.text}
-						onHandleColor={colors.textHighlight}
-						offColor={colors.grayLine}
-						onColor={colors.text}
-					/>
+					<div className={styles.switch}>
+						<Switch
+							onChange={toggleTheme}
+							checked={title === 'dark'}
+							checkedIcon={false}
+							uncheckedIcon={false}
+							height={10}
+							width={36}
+							handleDiameter={20}
+							offHandleColor={colors.text}
+							onHandleColor={colors.textHighlight}
+							offColor={colors.grayLine}
+							onColor={colors.text}
+						/>
+					</div>
+
+					<CountdownProvider>
+						<section>
+							<div>
+								<Profile />
+								<CompletedChallenges />
+								<Countdown />
+							</div>
+							<div>
+								<ChallengeBox />
+							</div>
+						</section>
+					</CountdownProvider>
 				</div>
-
-				<CountdownProvider>
-					<section>
-						<div>
-							<Profile />
-							<CompletedChallenges />
-							<Countdown />
-						</div>
-						<div>
-							<ChallengeBox />
-						</div>
-					</section>
-				</CountdownProvider>
-			</div>
-		</ChallengesProvider>
+			</ChallengesProvider>
+		</LoginProvider>
 	)
 }
 
 export const getServerSideProps: GetServerSideProps = async (ctx) => {
-	const { level, currentExperience, challengesCompleted } = ctx.req.cookies;
-	
+	const { level, currentExperience, challengesCompleted, logged, userLogged } = ctx.req.cookies;
+
+	const obj = JSON.parse(userLogged || '{"name":"Ítalo Henrique", "avatar":"https://github.com/italoh623.png", "gitHubUser":"italoh623"}');
+	// const user = new  User(obj.gitHubUser, obj.name, obj.avatar);
+
 	return {
 		props: {
 			level: Number(level),
 			currentExperience: Number(currentExperience),
-			challengesCompleted: Number(challengesCompleted)
+			challengesCompleted: Number(challengesCompleted),
+			logged: Boolean(logged),
+			userLogged: obj
 		}
 	}
 }

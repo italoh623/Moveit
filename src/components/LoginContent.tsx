@@ -1,19 +1,16 @@
-import { useRouter } from 'next/router';
-import { ChangeEvent, useEffect, useState } from 'react';
+import { ChangeEvent, useContext, useEffect, useState } from 'react';
+import { LoginContext } from '../contexts/LoginContext';
+
 import styles from '../styles/components/LoginContent.module.css';
 
 export function LoginContent() {
+    const { logged, LogIn }  = useContext(LoginContext);
+
     const [gitHubUser, setGitHubUser] = useState('');
     const [ready, setReady] = useState(false);
 
-    const router = useRouter()
-
     function handleChange(event: ChangeEvent<HTMLInputElement>) {
         setGitHubUser(event.target.value);
-    }
-
-    function navigate() {
-        router.push('/');
     }
 
     useEffect(() => {
@@ -46,7 +43,7 @@ export function LoginContent() {
                     <button 
                         type="button"
                         className={styles.ready}
-                        onClick={navigate}
+                        onClick={() => LogIn(gitHubUser)}
                     >
                         <img src="icons/arrow.svg" alt="Entrar"/>
                     </button>

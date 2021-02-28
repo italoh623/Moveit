@@ -1,15 +1,19 @@
 import { useContext } from 'react';
 import { ChallengesContext } from '../contexts/ChallengesContext';
+import { LoginContext } from '../contexts/LoginContext';
 import styles from '../styles/components/Profile.module.css';
 
 export function Profile() {
     const { level } = useContext(ChallengesContext);
+    const { logged, userLogged } = useContext(LoginContext);
+    // console.log(userLogged)
+
     
     return (
         <div className={styles.profileContainer}>
-            <img src="https://github.com/italoh623.png" alt="Ítalo Henrique"/>
+            <img src={`${userLogged.avatar}`} alt="Ítalo Henrique"/>
             <div>
-                <strong>Ítalo Henrique</strong>
+                <strong>{userLogged.name}</strong>
                 <p>
                     <img src="icons/level.svg" alt="Level"/>
                     Level {level}
