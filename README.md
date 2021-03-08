@@ -38,13 +38,17 @@ To run this server you will need a node version 12.0.0 (minimum)
 
 # Screenshots 
 
-<!-- * Sign Up Web 
+* Sign In 
 
-![](https://raw.githubusercontent.com/gitirana/GoInk/main/screenshots/signUp.png)
+![](https://raw.githubusercontent.com/italoh623/Moveit/master/screenshots/signIn.png)
 
-* Sign In Web 
+* Challenge Page 
 
-![](https://raw.githubusercontent.com/gitirana/GoInk/main/screenshots/signIn.png) -->
+![](https://raw.githubusercontent.com/italoh623/Moveit/master/screenshots/challenge.png)
+
+* Dark mode 
+
+![](https://raw.githubusercontent.com/italoh623/Moveit/master/screenshots/darkMode.png)
 
 
 ***The application still is in development 🚧. Soon this file will be updated with the deploy of the app and new features***
