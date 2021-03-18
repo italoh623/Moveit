@@ -1,11 +1,8 @@
-<!-- <h1 align="center">
+<h1 align="center">
 
-<img src="https://raw.githubusercontent.com/gitirana/GoInk-web/main/src/assets/logo.svg" alt="goink" />
+<img src="https://raw.githubusercontent.com/italoh623/Moveit/master/public/icons/logo-full.svg" alt="Moveit" />
 
-</h1> -->
-
-
-# Moveit
+</h1>
 
 Moveit it is an application developed in the Next Level Week by RocketSeat and aims to encourage the practice of exercises during the home office.
 
