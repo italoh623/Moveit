@@ -1,6 +1,6 @@
 <h1 align="center">
 
-<img src="https://raw.githubusercontent.com/italoh623/Moveit/master/public/icons/logo-full.svg" alt="Moveit" />
+<img src="https://raw.githubusercontent.com/italoh623/Moveit/master/public/logo-full.svg" alt="Moveit" />
 
 </h1>
 
